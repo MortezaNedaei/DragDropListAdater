@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.map
 class MainViewModel @ViewModelInject constructor() : ViewModel() {
 
     private val _data: MutableLiveData<MutableList<DataModel>> = MutableLiveData(mutableListOf())
-    val data: LiveData<MutableList<DataModel>> get() =  _data
+    val data: LiveData<List<DataModel>> = _data.map { it.toList() }
 
     init {
         repeat(20) { epoch ->
