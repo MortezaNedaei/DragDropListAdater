@@ -2,6 +2,7 @@ package com.mone.draglistadapter.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +55,12 @@ class MainListAdapter @Inject constructor() :
                 res.getString(R.string.item_text, bindingAdapterPosition)
 
             binding.img.setBackgroundResource(color)
+
+            val animation = AnimationUtils.loadAnimation(
+                binding.root.context,
+                R.anim.item_animation_from_bottom
+            )
+            binding.root.animation = animation
 
             binding.root.setOnLongClickListener {
                 onLongClickListener?.invoke(this@ViewHolder)

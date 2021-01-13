@@ -31,7 +31,7 @@ class MainViewModel @ViewModelInject constructor() : ViewModel() {
     val data: LiveData<List<DataModel>> = _data.map { it.toList() }
 
     init {
-        repeat(20) { epoch ->
+        repeat(100) { epoch ->
             _data.value?.add(DataModel(id = epoch.toString(), color = getRandomColor()))
         }
     }
