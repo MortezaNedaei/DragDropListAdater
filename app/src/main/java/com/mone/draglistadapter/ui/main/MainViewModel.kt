@@ -1,15 +1,16 @@
 package com.mone.draglistadapter.ui.main
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.mone.draglistadapter.R
 import com.mone.draglistadapter.data.DataModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 /**********************************
  * Usage:
@@ -25,7 +26,8 @@ import kotlinx.coroutines.flow.map
  ******************************************************************************/
 
 
-class MainViewModel @ViewModelInject constructor() : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : ViewModel() {
 
     private val _data: MutableLiveData<MutableList<DataModel>> = MutableLiveData(mutableListOf())
     val data: LiveData<List<DataModel>> = _data.map { it.toList() }
